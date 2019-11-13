@@ -1,0 +1,28 @@
+#!/bin/bash
+#PBS -N mobility
+#PBS -l nodes=1:ppn=16
+#PBS -m abe
+#PBS -j n
+##PBS -o job.log
+##PBS -e job.err
+#PBS -l walltime=120:00:00
+cd $PBS_O_WORKDIR
+
+date "+01 Today's date is: %D. The time execution %T" >> time.info
+mpirun -np 16 /your-path/vasp.5.4.4/build/std/vasp  > log
+date "+02 Today's date is: %D. The time finish %T" >> time.info
+
+cp ./CONTCAR ./2_scf/POSCAR
+cd ./2_scf/
+
+date "+01 Today's date is: %D. The time execution %T" >> time.info
+mpirun /your-path/vasp.5.4.4/build/std/vasp  > log
+date "+02 Today's date is: %D. The time finish %T" >> time.info
+
+cp ./CONTCAR ./band/POSCAR
+cp ./WAVECAR ./band/
+cd ./band/
+
+date "+01 Today's date is: %D. The time execution %T" >> time.info
+mpirun -np 16 /your-path/vasp.5.4.4/build/std/vasp  > log
+date "+02 Today's date is: %D. The time finish %T" >> time.info
