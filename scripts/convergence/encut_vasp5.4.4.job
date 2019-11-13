@@ -1,0 +1,57 @@
+#!/bin/bash
+#PBS -N test
+#PBS -l nodes=1:ppn=16
+#PBS -m abe
+#PBS -j n
+##PBS -o job.log
+##PBS -e job.err
+#PBS -l walltime=250:00:00
+cd $PBS_O_WORKDIR 
+
+
+touch toten_vs_encut.dat
+
+for ENCUT in $(seq 400 50 900); do
+
+# generate INCAR
+cat > INCAR << EOF
+SYSTEM = test
+ISTART = 0
+NWRITE = 2   
+PREC   = Accurate
+ENCUT  = $ENCUT
+GGA    = PE 
+NSW    = 200
+ISIF   = 3
+ISYM   = 2
+NBLOCK = 1   
+KBLOCK = 1
+IBRION = 2
+NELM   = 80   
+EDIFF  = 1E-05
+EDIFFG = -0.01 
+ALGO   = Normal
+LDIAG  = .TRUE.
+LREAL  = .FALSE.
+ISMEAR = 0
+SIGMA  = 0.02
+ICHARG = 2
+LPLANE = .TRUE.
+NPAR   = 4
+LSCALU = .FALSE.
+NSIM   = 4
+LWAVE  = .FALSE.
+LCHARG = .FALSE.
+ICORELEVEL =  1
+EOF
+
+date "+01 Today's date is: %D. The time execution %T" >> time.info
+mpirun -np 16 /your direction/vasp.5.4.4/bin/vasp_std  > log
+date "+02 Today's date is: %D. The time finish %T" >> time.info
+
+echo -e "$ENCUT \c" >> toten_vs_encut.dat
+grep TOTEN OUTCAR | tail -n 1 | \
+      awk '/TOTEN/{print $(NF-1)}' >> toten_vs_encut.dat
+done
+
+
