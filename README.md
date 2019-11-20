@@ -1,5 +1,5 @@
 # This repository mainly upload some useful scripts and tools for vasp calculations
-# <center> Contents </center>
+# Contents
 
 1. mobility: Containing the mobility.sh and pbs scripts for mobility calculation under VASP code
 
