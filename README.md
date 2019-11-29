@@ -9,6 +9,8 @@
 
    1.3 force_toten: Collected from [website](https://mp.weixin.qq.com/s?__biz=MzU5NDk2NTQzNQ==&mid=2247483924&idx=1&sn=b1f1145a77c1c2a08fc67d06a0fca2e4&chksm=fe7864c0c90fedd6989cd23884d6111eed90d7ad7e6182e4a42ce25fb570f9501a2f0cef87d7&mpshare=1&scene=1&srcid=11199HZiy5xYxtXVX6l8jx9j&sharer_sharetime=1575021319332&sharer_shareid=134886378a054646a604754944c4a131&pass_ticket=C6R9wAAPcs0%2B9YcISyTFoSf5zRqr8aO0xAY1q9gNLT3%2FeBQisFKyF7ugywxXA7p1#rd) and [here](http://blog.sina.com.cn/s/blog_b364ab230102vxj8.html)
 
+   1.4 get_band_gap: Collected from QijingZheng (https://github.com/QijingZheng)
+
 2. pyprocar：Collected from Romero Group (https://github.com/romerogroup); 
    I have modified the scriptKpath.py file to support the POSCAR structure of VASP5.
 
