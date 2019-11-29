@@ -1,0 +1,32 @@
+system=band for structure
+
+INCAR-basic
+   PREC   = Normal
+ENCUT=  450       # Don't change the line number(default is 5)
+   SIGMA = 0.05         # (Smearing value in eV; metals:0.2) Don't change the line number (default is 6 )
+   NELMIN= 5
+   LREAL = Auto
+
+   ALGO = Fast
+   EDIFF  = 1E-5
+#  ISMEAR = 0
+   ISPIN = 1
+#  MAGMOM = 3*1
+
+   NPAR = 2     ## important to reduce calculate time, equal sqrt(cpu cores)
+
+ Energy Band
+   NELM = 100
+   ISTART =1
+   ICHARG = 11
+   NSW    = 0
+   IBRION = -1
+   LORBIT = 11
+  # NBANS =8
+   EMIN = -15
+   EMAX =15
+   LCHARG = F
+   LWAVE  =  F
+
+# KPOINTS need Line-mode
+# Use 'qvasp -bandd' to get the results (OriginPro)
