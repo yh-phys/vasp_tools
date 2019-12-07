@@ -23,3 +23,5 @@
    3.3 pyband: Collected from QijingZheng (https://github.com/QijingZheng)
 
 4. dos_plot: Collected from QijingZheng (https://github.com/QijingZheng)
+
+5. fatband_gnuplot: Edit by Yong He @ Dec. 7, 2019
